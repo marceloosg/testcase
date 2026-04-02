@@ -30,8 +30,8 @@ for alpha in [0.01, 0.1, 0.2, 0.4, 0.8]:
         stripped = word.strip(".,!")
         suffix = word[len(stripped):]
 
-        # Keep connecting words and OOV tokens unchanged
-        if stripped.lower() in CONNECTING_WORDS or stripped not in model:
+        # Keep connecting words, numbers, and OOV tokens unchanged
+        if stripped.lower() in CONNECTING_WORDS or stripped.replace(".", "").isdigit() or stripped not in model:
             result.append(word)
             continue
 
